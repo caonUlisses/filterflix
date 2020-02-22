@@ -1,3 +1,6 @@
 index:
-    path: /
-    controller: App\Controller\MovieController::index
+  path: /
+  controller: App\Controller\MovieController::index
+index_v1:
+  path: /v1/
+  controller: App\Controller\MovieController::index
