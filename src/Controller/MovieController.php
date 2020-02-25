@@ -2,14 +2,27 @@
 
 namespace App\Controller;
 
-use App\Data\DTO\Movie;
+use App\Controller\Util\ApiCallerController;
+use App\Service\ParamService;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
-class MovieController
+class MovieController extends ApiCallerController
 {
-    public function index()
+    public function upcoming(ParamService $params): JsonResponse
     {
-        $movie = new Movie("Title");
-        return new JsonResponse(['status' => $movie]);
+        return $this->call('movie/popular', $params);
+    }
+
+    public function topRated(ParamService $params): JsonResponse
+    {
+        return $this->call('movie/top_rated', $params);
+    }
+
+    public function show(Request $request): JsonResponse
+    {
+        $id = $request->attributes->get('id');
+
+        return $this->call("movie/{$id}");
     }
 }
