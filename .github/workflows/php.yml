@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Build
 
 on: [push]
 
@@ -15,3 +15,12 @@ jobs:
 
     - name: Run test suite
       run: php bin/phpunit
+
+    - name: Codecov generate
+      run: bash <(curl -s https://codecov.io/bash)
+    
+    - name: Coverage      
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV }}
+
