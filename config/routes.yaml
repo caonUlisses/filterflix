@@ -1,6 +1,47 @@
 index:
   path: /
-  controller: App\Controller\MovieController::index
-index_v1:
-  path: /v1/
-  controller: App\Controller\MovieController::index
+  controller: App\Controller\DocController::index
+  methods: GET
+  defaults:
+    _format: json
+upcoming:
+  path: /movies/upcoming
+  controller: App\Controller\MovieController::upcoming
+  methods: GET
+  defaults:
+    _format: json
+topRated:
+  path: /movies/toprated
+  controller: App\Controller\MovieController::topRated
+  methods: GET
+  defaults:
+    _format: json
+movie:
+  path: /movies/{id<\d+>}
+  controller: App\Controller\MovieController::show
+  methods: GET
+  defaults:
+    _format: json
+videos:
+  path: /videos/{id<\d+>}
+  controller: App\Controller\VideoController::index
+  methods: GET
+  defaults:
+    _format: json
+genres:
+  path: /genres/
+  controller: App\Controller\GenreController::index
+  methods: GET
+  defaults:
+    _format: json
+genre:
+  path: /genres/{id<\d+>}
+  controller: App\Controller\GenreController::show
+  methods: GET
+  defaults:
+    _format: json
+
+app.swagger_ui:
+  path: /api/doc
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
