@@ -8,11 +8,12 @@ services:
     depends_on:
       - php
     ports:
-      - "8080:80"
+      - "80:80"
     restart: always
 
   php:
-    image: php:7.4-fpm
+    build:
+      context: ./docker/php
     ports:
       - "9000:9000"
     volumes:
