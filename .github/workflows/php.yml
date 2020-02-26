@@ -16,5 +16,4 @@ jobs:
     - name: Run test suite
       run: php bin/phpunit
       env:
-        MOVIEDB_URL: "https://api.themoviedb.org/3/"
         MOVIEDB_API_KEY: 1f54bd990f1cdfb230adb312546d765d
