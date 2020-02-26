@@ -22,9 +22,7 @@ class GenreController extends ApiCallerController
 
         $genres = ApiCaller::call("genre/movie/list")['genres'] ?? [];
 
-        $genre = array_filter($genres, function ($genre) use ($id) {
-            return $genre->id === $id;
-        });
+        $genre = array_filter($genres, fn($genre) => $genre->id === $id);
 
         return JsonResponse::create($genre);
     }
